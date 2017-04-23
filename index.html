@@ -17,11 +17,28 @@
         var side2 = parseInt($("#two").val());
         var side3 = parseInt($("#three").val());
 
+        if ((side1 == side2) && (side2 == side3)) {
+          var result = "The triangle is Equilateral";
+        } else if (
+          (side1 == side2) && (side2 !== side3) ||
+          (side1 == side3) && (side3 !== side2) ||
+          (side2 == side3) && (side3 !== side1)
+        ) {
+          var result = "The triangle is Isosceles";
+        }
 
+        //if (a + b < c || a + c < b || b + c < a)
+        else if ((side1 + side2 < side3) || (side1 + side3 < side2) || (side2 + side3 < side1)) {
+          var result = "It is not a triangle";
+        } else if ((side1 !== side2) && (side1 !== side3) && (side2 !== side3)) {
+          var result = "The triangle is scalene";
+        } else {
+          var result = "It is something else";
+        }
         //var result_add = (number1 + number2);
-        //$("#output1").text(result_add);
+        $("#output").text(result);
 
-        alert(side1);
+        //alert(side1);
 
       })
     });
@@ -50,11 +67,11 @@
       <br>Enter length of side 2: <input type="number" class="form-control" id="two" name="number2" value="">
 
       <br>Enter length of side 3: <input type="number" class="form-control" id="three" name="number2" value="">
-
+      <br>
       <button type="submit" id="check" class="btn btn-info" name="button"> check </button>
 
       <br> Result =
-      <div id="output"></div>
+      <span id="output"></span>
 
 
 
